@@ -1,1 +1,38 @@
+1- connect to Grid5000
+2- deploy 7 nodes :
 
+oarsub -I -l nodes=7,walltime=6 -t deploy
+kadeploy3 -f $OAR_NODE_FILE -e jessie-x64-base -k
+cat $OAR_NODE_FILE
+
+3- install and start 3 configuration servers by executing the following commends for every node:
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+apt-get update
+apt-get install -y mongodb-org
+pwd
+mkdir /mongo-metadata
+mongod --configsvr --dbpath /mongo-metadata --port 27019
+
+4- install and start 2 query servers :
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+
+
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+apt-get update
+apt-get install -y mongodb-org
+service mongod stop
+mongos --configdb genepi-33:27019,genepi-9:27019,edel-68:27019
+
+Rq: genepi-i , edel-i are the names of the nodes where you installed the configuration servers
+
+
+5- install and deploy 2 shard servers :
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+apt-get update
+apt-get install -y mongodb-org
+mkdir /data
+mkdir /data/db
+mongod --shardsvr 
