@@ -53,9 +53,14 @@ causal_clustering.discovery_members=dahu-5:5000,dahu-6:5000,dahu-7:5000
 
 6- Start servers:
 
-neo4j start
-neo4j-admin set-initial-password h6u4%kr
+neo4j start 
 
 
 7- Query neo4j client:
 cypher-shell
+
+8- connect using the following username and password : neo4j - neo4j 
+
+9- change the password : CALL dbms.changePassword('my_new_secure_passw0rd');
+
+10- restart server : neo4j restart
