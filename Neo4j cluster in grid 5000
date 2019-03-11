@@ -54,7 +54,7 @@ causal_clustering.discovery_members=dahu-5:5000,dahu-6:5000,dahu-7:5000
 6- Start servers:
 
 neo4j start
-
+neo4j-admin set-initial-password h6u4%kr
 
 
 7- Query neo4j client:
