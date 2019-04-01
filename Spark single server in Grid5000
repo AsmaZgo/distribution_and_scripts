@@ -7,3 +7,22 @@ cd workspace/archives
 scp jdk-8u131-linux-x64.tar.gz root@name_of_node:/home
 
 
+In the created node :
+
+wget http://apache.mirrors.ovh.net/ftp.apache.org/dist/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz
+
+ tar xzf /home/jdk-8u131-linux-x64.tar.gz
+
+
+rm -R /usr/bin/java
+
+ mkdir /usr/bin/java && cp -r jdk1.8.0_131/* /usr/bin/java
+
+export JAVA_HOME=/usr/bin/java; 
+
+export PATH="/root/spark-2.4.0-bin-hadoop2.7/bin:$PATH"
+export SPARK_HOME=/root/spark-2.4.0-bin-hadoop2.7
+
+export SPARK_CONF_DIR=$SPARK_HOME/conf
+
+spark-shell
