@@ -1,0 +1,9 @@
+oarsub -I -l nodes=1,walltime=6 -t deploy
+kadeploy3 -f $OAR_NODE_FILE -e jessie-x64-base -k
+
+
+cd workspace/archives
+
+scp jdk-8u131-linux-x64.tar.gz root@name_of_node:/home
+
+
