@@ -1,0 +1,28 @@
+#In front end
+
+scp workspace/archives/jdk-8u131-linux-x64.tar.gz root@dahu-3:/home
+cp scripts/spark.sh root@dahu-3:/home
+#In nodes
+#In order to monitor network communication , start ganglia 
+service ganglia-monitor start
+
+sh /home/spark.sh
+
+export JAVA_HOME=/usr/bin/java;
+export PATH="/home/spark-2.4.0-bin-hadoop2.7/bin:$PATH"
+export SPARK_HOME=/root/spark-2.4.0-bin-hadoop2.7
+export SPARK_CONF_DIR=$SPARK_HOME/conf
+
+
+
+
+
+
+
+#In master node:
+$SPARK_HOME/sbin/start-master.sh
+
+#In slave node:
+$SPARK_HOME/sbin/start-slave.sh spark://dahu-3.grenoble.grid5000.fr:7077
+
+
