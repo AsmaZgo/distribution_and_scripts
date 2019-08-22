@@ -17,4 +17,5 @@ vi $HBASE_HOME/conf/hbase-site.xml
 </configuration>
 
 4- $HBASE_HOME/bin/start-hbase.sh
+5-$HBASE_HOME/bin/hbase-shell
 
