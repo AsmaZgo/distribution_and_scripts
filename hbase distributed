@@ -14,7 +14,18 @@ vi $HBASE_HOME/conf/hbase-site.xml
     <name>hbase.cluster.distributed</name>
     <value>false</value>
   </property>
+  
+ <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>dahu-7.grenoble.grid5000.fr,dahu-32.grenoble.grid5000.fr</value>
+  </property>
 </configuration>
+
+
+vi $HBASE_HOME/conf/regionservers
+dahu-7.grenoble.grid5000.fr
+dahu-32.grenoble.grid5000.fr
+
 
 4- $HBASE_HOME/bin/start-hbase.sh
 5-$HBASE_HOME/bin/hbase-shell
