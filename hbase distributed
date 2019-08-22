@@ -1,0 +1,20 @@
+* Deploy a hdfs distributed cluster
+* hbase pseudo-dist
+2- create vars
+export HBASE_HOME="/root/hbase-1.4.9"
+3- configure hbase 
+vi $HBASE_HOME/conf/hbase-site.xml
+
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://dahu-7.grenoble.grid5000.fr:8020/hbase</value>
+  </property>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>false</value>
+  </property>
+</configuration>
+
+4- $HBASE_HOME/bin/start-hbase.sh
+
