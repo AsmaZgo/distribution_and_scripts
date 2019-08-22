@@ -1,4 +1,5 @@
 * Deploy a hdfs distributed cluster
+1- su hadoop
 * hbase pseudo-dist
 2- create vars
 export HBASE_HOME="/root/hbase-1.4.9"
